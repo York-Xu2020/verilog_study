@@ -1,6 +1,5 @@
-`ifndef StcuIBranchStack_V
-`define StcuIBranchStack_V
-module StcuIBranchStack #( parameter
+
+module Stack #( parameter
     DW    = 98,
     DEPTH = 32,
     AW    = $clog2(DEPTH>2?DEPTH:2)//,
@@ -19,7 +18,7 @@ output wire                     stk_full            ,
 output wire                     stk_empty           ,
 output wire                     stk_hold            ,
 //usr_ram_if
-StkRamIf.Master                 stk_ram_if          //,
+StkRamIf.Master                 stk_ram_if          
 );
 
     localparam REG_DEPTH = 8 ;
@@ -227,4 +226,4 @@ StkRamIf.Master                 stk_ram_if          //,
     assign stk_hold   = stk_wren && stk_full || stk_rden && stk_empty ;
 
 endmodule
-`endif
+
